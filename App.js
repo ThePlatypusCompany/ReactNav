@@ -18,6 +18,9 @@ class ReactNav extends Component {
 }
 
 class GreenScreen extends Component {
+  static navigationOptions = {
+    title: 'Green',
+  }
   render() {
     return(
       <View style={styles.green}>
@@ -28,6 +31,9 @@ class GreenScreen extends Component {
 }
 
 class RedScreen extends Component {
+  static navigationOptions = {
+    title: 'Red',
+  }
   render() {
     return(
       <View style={styles.red}>
@@ -38,6 +44,9 @@ class RedScreen extends Component {
 }
 
 class BlueScreen extends Component {
+  static navigationOptions = {
+    title: 'Blue',
+  }
   render() {
     return(
       <View style={styles.blue}>
@@ -48,6 +57,9 @@ class BlueScreen extends Component {
 }
 
 class PurpleScreen extends Component {
+  static navigationOptions = {
+    title: 'Purple',
+  }
   render() {
     return(
       <View style={styles.purple}>
