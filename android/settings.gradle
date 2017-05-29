@@ -1,0 +1,3 @@
+rootProject.name = 'ReactNav'
+
+include ':app'
