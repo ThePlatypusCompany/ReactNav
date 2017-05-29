@@ -39,9 +39,6 @@ class GreenScreen extends Component {
 }
 
 class RedScreen extends Component {
-  static navigationOptions = {
-    title: 'Red',
-  }
   render() {
     return(
       <View style={styles.red}>
@@ -54,6 +51,15 @@ class RedScreen extends Component {
         </TouchableHighlight>
       </View>
     );
+  }
+}
+
+RedScreen.navigationOptions = props => {
+  const { navigation } = props;
+  return {
+    headerTitle: 'Red',
+    headerRight: (<Button title='Purple' onPress={() => navigation.navigate('Purple')}/>),
+    headerLeft: (<Button title='Blue' onPress={() => navigation.navigate('Blue')}/>)
   }
 }
 
