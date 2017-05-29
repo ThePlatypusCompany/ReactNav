@@ -5,7 +5,8 @@ import {
   StyleSheet,
   View,
   Text,
-  TouchableHighlight
+  TouchableHighlight,
+  Button
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import styles from './Styles.js';
@@ -45,6 +46,12 @@ class RedScreen extends Component {
     return(
       <View style={styles.red}>
         <Text style={styles.text}>This is the Red Screen</Text>
+        <TouchableHighlight
+          style={styles.button}
+          onPress={() => this.props.navigation.goBack()}
+        >
+          <Text style={styles.text}>Back to Green</Text>
+        </TouchableHighlight>
       </View>
     );
   }
