@@ -6,14 +6,13 @@ import {
   View,
   Text
 } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 import styles from './Styles.js';
 
 class ReactNav extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Hello World</Text>
-      </View>
+      <StackNav/>
     );
   }
 }
@@ -57,5 +56,12 @@ class PurpleScreen extends Component {
     );
   }
 }
+
+const StackNav = StackNavigator({
+  Green: { screen: GreenScreen },
+  Red: { screen: RedScreen},
+  Blue: { screen: BlueScreen },
+  Purple: { screen: PurpleScreen }
+})
 
 AppRegistry.registerComponent('ReactNav', () => ReactNav);
