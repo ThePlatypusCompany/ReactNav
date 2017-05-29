@@ -8,13 +8,13 @@ import {
   TouchableHighlight,
   Button
 } from 'react-native';
-import { StackNavigator, TabNavigator } from 'react-navigation';
+import { StackNavigator, TabNavigator, DrawerNavigator } from 'react-navigation';
 import styles from './Styles.js';
 
 class ReactNav extends Component {
   render() {
     return (
-      <TabNav/>
+      <DrawerNav/>
     );
   }
 }
@@ -33,6 +33,12 @@ class GreenScreen extends Component {
         >
           <Text style={styles.text}>Go to Red</Text>
         </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.button}
+          onPress={() => this.props.navigation.navigate('DrawerOpen')}
+        >
+          <Text style={styles.text}>Open Drawer</Text>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -48,6 +54,12 @@ class RedScreen extends Component {
           onPress={() => this.props.navigation.goBack()}
         >
           <Text style={styles.text}>Back to Green</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.button}
+          onPress={() => this.props.navigation.navigate('DrawerOpen')}
+        >
+          <Text style={styles.text}>Open Drawer</Text>
         </TouchableHighlight>
       </View>
     );
@@ -71,6 +83,12 @@ class BlueScreen extends Component {
     return(
       <View style={styles.blue}>
         <Text style={styles.text}>This is the Blue Screen</Text>
+        <TouchableHighlight
+          style={styles.button}
+          onPress={() => this.props.navigation.navigate('DrawerOpen')}
+        >
+          <Text style={styles.text}>Open Drawer</Text>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -84,6 +102,12 @@ class PurpleScreen extends Component {
     return(
       <View style={styles.purple}>
         <Text style={styles.text}>This is the Purple Screen</Text>
+        <TouchableHighlight
+          style={styles.button}
+          onPress={() => this.props.navigation.navigate('DrawerOpen')}
+        >
+          <Text style={styles.text}>Open Drawer</Text>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -112,5 +136,12 @@ const TabNav = TabNavigator(
     }
   }
 )
+
+const DrawerNav = DrawerNavigator({
+  Green: { screen: GreenScreen },
+  Red: { screen: RedScreen },
+  Blue: { screen: BlueScreen },
+  Purple: { screen: PurpleScreen }
+})
 
 AppRegistry.registerComponent('ReactNav', () => ReactNav);
