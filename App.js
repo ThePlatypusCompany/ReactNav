@@ -14,7 +14,7 @@ import styles from './Styles.js';
 class ReactNav extends Component {
   render() {
     return (
-      <DrawerNav/>
+      <NestedNav/>
     );
   }
 }
@@ -33,12 +33,6 @@ class GreenScreen extends Component {
         >
           <Text style={styles.text}>Go to Red</Text>
         </TouchableHighlight>
-        <TouchableHighlight
-          style={styles.button}
-          onPress={() => this.props.navigation.navigate('DrawerOpen')}
-        >
-          <Text style={styles.text}>Open Drawer</Text>
-        </TouchableHighlight>
       </View>
     );
   }
@@ -51,7 +45,7 @@ class RedScreen extends Component {
         <Text style={styles.text}>This is the Red Screen</Text>
         <TouchableHighlight
           style={styles.button}
-          onPress={() => this.props.navigation.goBack()}
+          onPress={() => this.props.navigation.navigate('Landing')}
         >
           <Text style={styles.text}>Back to Green</Text>
         </TouchableHighlight>
@@ -76,9 +70,6 @@ RedScreen.navigationOptions = props => {
 }
 
 class BlueScreen extends Component {
-  static navigationOptions = {
-    title: 'Blue',
-  }
   render() {
     return(
       <View style={styles.blue}>
@@ -95,9 +86,6 @@ class BlueScreen extends Component {
 }
 
 class PurpleScreen extends Component {
-  static navigationOptions = {
-    title: 'Purple',
-  }
   render() {
     return(
       <View style={styles.purple}>
@@ -143,5 +131,31 @@ const DrawerNav = DrawerNavigator({
   Blue: { screen: BlueScreen },
   Purple: { screen: PurpleScreen }
 })
+
+const NestedNav = StackNavigator(
+  {
+    Landing: { screen: GreenScreen },
+    Drawer: { screen: DrawerNavigator(
+      {
+        Home: { screen: TabNavigator(
+          {
+            Red: { screen: RedScreen },
+            Blue: { screen: BlueScreen }
+          },
+          {
+            tabBarOptions: {
+              labelStyle: {
+                fontSize: 20,
+                marginBottom: 10
+              }
+            }
+          }
+        )},
+        Purple: { screen: PurpleScreen }
+      }
+    ) }
+  },
+  { headerMode: 'none' }
+)
 
 AppRegistry.registerComponent('ReactNav', () => ReactNav);
