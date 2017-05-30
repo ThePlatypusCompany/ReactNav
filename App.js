@@ -20,9 +20,6 @@ class ReactNav extends Component {
 }
 
 class GreenScreen extends Component {
-  static navigationOptions = {
-    title: 'Green',
-  }
   render() {
     return(
       <View style={styles.green}>
