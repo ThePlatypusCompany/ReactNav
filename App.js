@@ -29,7 +29,7 @@ class GreenScreen extends Component {
         <Text style={styles.text}>This is the Green Screen</Text>
         <TouchableHighlight
           style={styles.button}
-          onPress={() => this.props.navigation.navigate('Red')}
+          onPress={() => this.props.navigation.navigate('Home')}
         >
           <Text style={styles.text}>Go to Red</Text>
         </TouchableHighlight>
